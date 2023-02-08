@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { useAppStore } from "./stores/appStore.js"
 
 const handleStore = useAppStore()
@@ -14,13 +13,16 @@ const handleStore = useAppStore()
   <header>
     <div class="desktop-nav" >
       <ul >
-        <li class="title1" style="font-size: 2rem">Quick Resume</li>
-        <li><RouterLink to="/" class="link">Home</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Create Resume</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Resume Samples</RouterLink></li>
-        <li><RouterLink to="/about" class="link">FAQ</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Contact Us</RouterLink></li>
+        <li class="title1" style="font-size:2rem"><RouterLink to="/" class="link">Quick Resume</RouterLink></li>
+        <li><RouterLink to="/create-resume" class="link">Create Resume</RouterLink></li>
+        <li><RouterLink to="/samples" class="link">Resume Samples</RouterLink></li>
+        <li><RouterLink to="/faq" class="link">FAQ</RouterLink></li>
+        <li><RouterLink to="/contact" class="link">Contact Us</RouterLink></li>
       </ul>
+      <div class="auth-btn">
+          <li><RouterLink to="/sign-up" class="link">Sign up</RouterLink></li>
+          <li><RouterLink to="/sign-in" class="link">Sign in</RouterLink></li>
+      </div>
     </div>
     <div class="mobile-nav">
       <div class="title2">Quick Resume</div>
@@ -32,15 +34,12 @@ const handleStore = useAppStore()
           <font-awesome-icon icon="fa-solid fa-xmark" style="font-size:2rem" />
         </button>
         <li><RouterLink to="/" class="link">Home</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Create Resume</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Resume Samples</RouterLink></li>
-        <li><RouterLink to="/about" class="link">FAQ</RouterLink></li>
-        <li><RouterLink to="/about" class="link">Contact Us</RouterLink></li>
+        <li><RouterLink to="/create-resume" class="link">Create Resume</RouterLink></li>
+        <li><RouterLink to="/samples" class="link">Resume Samples</RouterLink></li>
+        <li><RouterLink to="/faq" class="link">FAQ</RouterLink></li>
+        <li><RouterLink to="/contact" class="link">Contact Us</RouterLink></li>
       </ul>
     </div>
-    <nav class="mobile">
-
-    </nav>
   </header>
   <RouterView />
 </main>
@@ -106,29 +105,27 @@ main{
   font-size: 2rem;
   cursor: pointer;
 }
-.title:hover{
-  color: #203a43
-}
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1000px){
 main{
   width: 100%;
   padding:0;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #ddd;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); 
+  color: #fafae4;
 }
 .desktop-nav{
   height: auto;
   background: black;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .desktop-nav ul{
   text-decoration: none;
   display: flex;
   align-items: center;
   margin: auto 0;
+  justify-content: flex-start;
 }
 .desktop-nav li{
   list-style-type: none;
@@ -150,6 +147,15 @@ main{
 .link:hover{
   color: #203a43;
 }
+.auth-btn {
+  margin-right: 4rem;
+  display: flex;
+}
+.auth-btn button{
+  background: #203a43;
+  color:#ddd;
+  padding: 0.5rem 1.5rem
+}
 .title1{
   list-style-type: none;
   margin: 0 1rem;
@@ -161,9 +167,7 @@ main{
   cursor: pointer;
  
 }
-.title:hover{
-  color: #203a43
-}
+
 .mobile-nav{
   display: none;
 }
